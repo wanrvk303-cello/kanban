@@ -90,6 +90,9 @@ function Card({ cardId, onClick }: Props) {
         </span>
       </div>
       <div className="card-title">{card.title}</div>
+      {card.description && (
+        <div className="card-desc">{card.description.replace(/[#*\[\]()>]/g, '').split('\n')[0].slice(0, 80)}</div>
+      )}
       {card.tags.length > 0 && (
         <div className="card-tags">
           {card.tags.map((tag) => (
