@@ -26,6 +26,17 @@ const PLATFORM_COLORS: Record<string, string> = {
 export default function Card({ cardId, onClick }: Props) {
   const { board } = useBoard();
   const card = board.cards[cardId];
+
+  function getDueStatus(): { label: string; className: string } | null {
+    if (!card?.dates.dueDate) return null;
+    const now = Date.now();
+    const due = new Date(card.dates.dueDate).getTime();
+    const diff = due - now;
+    if (diff < 0) return { label: 'Overdue', className: 'due-overdue' };
+    if (diff < 86400000) return { label: 'Due soon', className: 'due-soon' };
+    if (diff < 604800000) return { label: 'Due this week', className: 'due-week' };
+    return null;
+  }
   const {
     attributes,
     listeners,
@@ -44,6 +55,7 @@ export default function Card({ cardId, onClick }: Props) {
   if (!card) return null;
 
   const hasMetrics = card.metrics.likes > 0 || card.metrics.comments > 0 || card.metrics.views > 0;
+  const dueStatus = getDueStatus();
 
   return (
     <div
@@ -78,6 +90,9 @@ export default function Card({ cardId, onClick }: Props) {
             <span key={tag} className="card-tag">{tag}</span>
           ))}
         </div>
+      )}
+      {dueStatus && (
+        <div className={`card-due ${dueStatus.className}`}>{dueStatus.label}</div>
       )}
       {hasMetrics && (
         <div className="card-metrics">

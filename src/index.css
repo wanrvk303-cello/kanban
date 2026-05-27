@@ -38,6 +38,21 @@
   --accent: #818cf8;
   --accent-hover: #6366f1;
   --danger: #f87171;
+  --due-overdue-bg: #7f1d1d;
+  --due-overdue-text: #fca5a5;
+  --due-soon-bg: #78350f;
+  --due-soon-text: #fde68a;
+  --due-week-bg: #312e81;
+  --due-week-text: #a5b4fc;
+}
+
+[data-theme='light'] {
+  --due-overdue-bg: #fee2e2;
+  --due-overdue-text: #dc2626;
+  --due-soon-bg: #fef3c7;
+  --due-soon-text: #d97706;
+  --due-week-bg: #e0e7ff;
+  --due-week-text: #4f46e5;
 }
 
 *,

@@ -76,6 +76,30 @@
   border-radius: 4px;
 }
 
+.card-due {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.card-due.due-overdue {
+  background: var(--due-overdue-bg);
+  color: var(--due-overdue-text);
+}
+
+.card-due.due-soon {
+  background: var(--due-soon-bg);
+  color: var(--due-soon-text);
+}
+
+.card-due.due-week {
+  background: var(--due-week-bg);
+  color: var(--due-week-text);
+}
+
 .card-metrics {
   display: flex;
   gap: 10px;
