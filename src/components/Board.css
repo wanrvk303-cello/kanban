@@ -1,11 +1,14 @@
 .board {
   display: flex;
   gap: 16px;
-  padding: 16px;
+  padding: 16px 20px;
   overflow-x: auto;
   flex: 1;
   align-items: flex-start;
   min-height: 0;
+  z-index: 1;
+  position: relative;
+  padding-bottom: 40px;
 }
 
 .add-column {
@@ -16,38 +19,42 @@
 .add-column-btn {
   width: 100%;
   padding: 12px;
-  border: 2px dashed var(--border);
+  border: 1px dashed var(--glass-border);
   border-radius: 12px;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 14px;
+  background: var(--glass-bg);
+  color: var(--text-dim);
+  font-size: 13px;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
 }
 
 .add-column-btn:hover {
-  background: var(--tag-bg);
+  background: var(--glass-hover);
   color: var(--text);
   border-color: var(--accent);
 }
 
 .add-column-form {
-  background: var(--col-bg);
+  background: var(--glass-strong);
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  backdrop-filter: blur(8px);
 }
 
 .add-column-input {
   padding: 8px 10px;
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  background: var(--input-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
   color: var(--text);
   font-size: 13px;
   outline: none;
+  transition: border-color 0.2s;
 }
 
 .add-column-input:focus {
@@ -61,19 +68,37 @@
 
 .btn {
   padding: 6px 14px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  background: var(--glass-bg);
   color: var(--text);
-  font-size: 13px;
+  font-size: 12px;
   cursor: pointer;
   font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: var(--glass-hover);
 }
 
 .btn-primary {
   background: var(--accent);
   color: #fff;
   border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn-danger:hover {
+  background: var(--danger-bg);
 }
 
 .board-footer {
@@ -84,10 +109,11 @@
   display: flex;
   justify-content: center;
   gap: 24px;
-  padding: 8px 20px;
-  background: var(--header-bg);
-  border-top: 1px solid var(--border);
+  padding: 6px 20px;
+  background: rgba(10, 10, 15, 0.5);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--glass-border);
   font-size: 11px;
-  color: var(--text-muted);
+  color: var(--text-dim);
   z-index: 5;
 }

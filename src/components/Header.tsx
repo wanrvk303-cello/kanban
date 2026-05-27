@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { useBoard } from '../data/store';
 import { createDefaultBoard } from '../data/defaults';
 import FilterBar from './FilterBar';
-import { useTheme } from '../hooks/useTheme';
 import type { Filters } from '../App';
 import './Header.css';
 
 interface Props {
   filters: Filters;
   onFilterChange: (filters: Filters) => void;
+  theme: 'light' | 'dark';
+  onToggleTheme: () => void;
 }
 
-export default function Header({ filters, onFilterChange }: Props) {
+export default function Header({ filters, onFilterChange, theme, onToggleTheme }: Props) {
   const { board, dispatch } = useBoard();
-  const { theme, toggle } = useTheme();
   const [showReset, setShowReset] = useState(false);
 
   function handleExport() {
@@ -58,13 +58,13 @@ export default function Header({ filters, onFilterChange }: Props) {
 
   return (
     <header className="header">
-      <h1 className="header-title">📷 Content Kanban</h1>
+      <h1 className="header-title">Content Kanban</h1>
       <FilterBar filters={filters} onChange={onFilterChange} />
       <div className="header-actions">
-        <button className="header-btn" onClick={handleExport} title="Export board">📥 Export</button>
-        <button className="header-btn" onClick={handleImport} title="Import board">📤 Import</button>
-        <button className="header-btn header-btn-danger" onClick={() => setShowReset(true)} title="Reset to defaults">🔄 Reset</button>
-        <button className="header-btn" onClick={toggle} title="Toggle theme">
+        <button className="header-btn" onClick={handleExport} title="Export board">Export</button>
+        <button className="header-btn" onClick={handleImport} title="Import board">Import</button>
+        <button className="header-btn header-btn-danger" onClick={() => setShowReset(true)} title="Reset to defaults">Reset</button>
+        <button className="header-btn header-theme-btn" onClick={onToggleTheme} title="Toggle theme">
           {theme === 'dark' ? '☀️' : '🌙'}
         </button>
       </div>

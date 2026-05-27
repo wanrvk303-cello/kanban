@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export function useTheme() {
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    return (localStorage.getItem('kanban-theme') as 'light' | 'dark') || 'light';
+    return (localStorage.getItem('kanban-theme') as 'light' | 'dark') || 'dark';
   });
 
   useEffect(() => {
