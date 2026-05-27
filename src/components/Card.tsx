@@ -66,7 +66,11 @@ function Card({ cardId, onClick }: Props) {
       {...attributes}
       {...listeners}
       className="card"
+      role="button"
+      tabIndex={0}
+      aria-label={`Card: ${card.title}`}
       onClick={() => onClick(cardId)}
+      onKeyDown={(e) => { if (e.key === 'Enter') onClick(cardId); }}
     >
       {card.coverImage && (
         <div className="card-cover">
