@@ -9,9 +9,10 @@ import './Column.css';
 
 interface Props {
   column: ColumnType;
+  cardMatches: (cardId: string) => boolean;
 }
 
-export default function Column({ column }: Props) {
+export default function Column({ column, cardMatches }: Props) {
   const { board, dispatch } = useBoard();
   const { setNodeRef } = useDroppable({ id: column.id });
   const [modalCardId, setModalCardId] = useState<string | null>(null);
@@ -33,6 +34,8 @@ export default function Column({ column }: Props) {
     }
     setShowMenu(false);
   }
+
+  const hasActiveFilters = false; // simplified
 
   return (
     <>
@@ -78,9 +81,10 @@ export default function Column({ column }: Props) {
             {column.cardIds.length === 0 && (
               <div className="column-empty">Drop cards here</div>
             )}
-            {column.cardIds.map((cardId) => (
-              <Card key={cardId} cardId={cardId} onClick={setModalCardId} />
-            ))}
+            {column.cardIds.map((cardId) => {
+              if (!cardMatches(cardId)) return null;
+              return <Card key={cardId} cardId={cardId} onClick={setModalCardId} />;
+            })}
           </SortableContext>
         </div>
         <button className="column-add-btn" onClick={() => setShowNewCard(true)}>

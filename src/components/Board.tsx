@@ -11,9 +11,14 @@ import {
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 import { useBoard } from '../data/store';
 import Column from './Column';
+import type { Filters } from '../App';
 import './Board.css';
 
-export default function Board() {
+interface Props {
+  filters: Filters;
+}
+
+export default function Board({ filters }: Props) {
   const { board, dispatch } = useBoard();
   const [addingCol, setAddingCol] = useState(false);
   const [newColTitle, setNewColTitle] = useState('');
@@ -22,6 +27,25 @@ export default function Board() {
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
+
+  function cardMatches(cardId: string): boolean {
+    const card = board.cards[cardId];
+    if (!card) return true;
+    if (filters.search) {
+      const q = filters.search.toLowerCase();
+      if (
+        !card.title.toLowerCase().includes(q) &&
+        !card.description.toLowerCase().includes(q) &&
+        !card.tags.some((t) => t.toLowerCase().includes(q))
+      ) {
+        return false;
+      }
+    }
+    if (filters.contentType && card.contentType !== filters.contentType) return false;
+    if (filters.platform && card.platform !== filters.platform) return false;
+    if (filters.priority && card.priority !== filters.priority) return false;
+    return true;
+  }
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
@@ -78,7 +102,13 @@ export default function Board() {
         {board.columnOrder.map((colId) => {
           const col = board.columns.find((c) => c.id === colId);
           if (!col) return null;
-          return <Column key={col.id} column={col} />;
+          return (
+            <Column
+              key={col.id}
+              column={col}
+              cardMatches={cardMatches}
+            />
+          );
         })}
         <div className="add-column">
           {addingCol ? (

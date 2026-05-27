@@ -1,0 +1,35 @@
+.filterbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filterbar-search {
+  padding: 6px 12px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 13px;
+  width: 180px;
+  outline: none;
+}
+
+.filterbar-search:focus {
+  border-color: var(--accent);
+}
+
+.filterbar-select {
+  padding: 6px 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.filterbar-select:focus {
+  border-color: var(--accent);
+}
