@@ -49,3 +49,49 @@
 .header-btn:hover {
   background: var(--tag-bg);
 }
+
+.header-btn-danger {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.header-btn-danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--modal-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.confirm-dialog {
+  background: var(--modal-bg);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-dialog p {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.confirm-warning {
+  color: var(--danger) !important;
+  font-size: 12px !important;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
