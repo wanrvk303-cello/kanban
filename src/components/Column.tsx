@@ -56,7 +56,7 @@ export default function Column({ column, cardMatches }: Props) {
           )}
           <div className="column-header-right">
             <span className="column-count">{column.cardIds.length}</span>
-            <div className="column-menu-wrap">
+            <div className={`column-menu-wrap${showMenu ? ' menu-open' : ''}`}>
               <button className="column-menu-btn" onClick={() => setShowMenu(!showMenu)} aria-label="Column menu">⋮</button>
               {showMenu && (
                 <div className="column-menu">

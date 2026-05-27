@@ -2,24 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 20px;
-  background: rgba(10, 10, 15, 0.6);
+  padding: 14px 20px;
+  background: var(--bg-deep);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--border-subtle);
   flex-shrink: 0;
   z-index: 2;
 }
 
 .header-title {
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 18px;
   font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.3px;
-  background: linear-gradient(135deg, #e8e8ed, var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
 }
 
 .header-actions {
@@ -29,21 +27,21 @@
 }
 
 .header-btn {
-  padding: 6px 12px;
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
-  background: var(--glass-bg);
-  color: var(--text);
-  font-size: 12px;
-  font-weight: 500;
+  padding: 7px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
-  backdrop-filter: blur(4px);
 }
 
 .header-btn:hover {
-  background: var(--glass-hover);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
 }
 
 .header-btn-danger {
@@ -57,16 +55,16 @@
 }
 
 .header-theme-btn {
-  font-size: 16px;
-  padding: 4px 10px;
+  font-size: 15px;
+  padding: 6px 12px;
   line-height: 1;
 }
 
 .confirm-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,18 +72,17 @@
 }
 
 .confirm-dialog {
-  background: var(--glass-modal);
-  border: 1px solid var(--glass-border);
-  border-radius: 16px;
-  padding: 24px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 28px;
   max-width: 360px;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-modal);
 }
 
 .confirm-dialog p {
   font-size: 14px;
-  color: var(--text);
+  color: var(--text-primary);
   margin-bottom: 8px;
   line-height: 1.5;
 }
@@ -99,5 +96,5 @@
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin-top: 16px;
+  margin-top: 20px;
 }

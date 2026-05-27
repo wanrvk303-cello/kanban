@@ -1,117 +1,121 @@
 .column {
-  background: var(--glass-strong);
-  border: 1px solid var(--glass-border);
-  border-radius: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
   min-width: 280px;
   max-width: 320px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 140px);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s, border-color 0.3s;
 }
 
 .column:hover {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--border-hover);
 }
 
 .column-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px 10px;
+  padding: 16px 16px 10px;
 }
 
 .column-header-right {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 
 .column-title {
-  font-size: 13px;
+  font-family: var(--font-display);
+  font-size: 15px;
   font-weight: 600;
   margin: 0;
-  color: var(--text);
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
 }
 
 .column-rename-input {
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 600;
-  padding: 4px 8px;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.4);
-  color: var(--text);
+  padding: 6px 10px;
+  border: 1.5px solid var(--border-accent);
+  border-radius: 8px;
+  background: var(--bg-deep);
+  color: var(--text-primary);
   outline: none;
   width: 100%;
 }
 
 .column-count {
-  background: var(--glass-bg);
-  color: var(--text-dim);
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
   font-size: 10px;
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 10px;
-  border: 1px solid var(--glass-border);
+  border: 1px solid var(--border-subtle);
 }
 
 .column-menu-wrap {
   position: relative;
 }
 
+.column-menu-wrap.menu-open {
+  z-index: 30;
+}
+
 .column-menu-btn {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  color: var(--text-dim);
+  font-size: 18px;
+  color: var(--text-tertiary);
   padding: 2px 6px;
-  border-radius: 4px;
-  transition: color 0.2s;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
   line-height: 1;
 }
 
 .column-menu-btn:hover {
-  color: var(--text);
+  color: var(--text-primary);
+  background: var(--bg-hover);
 }
 
 .column-menu {
   position: absolute;
   top: 100%;
   right: 0;
-  z-index: 20;
-  background: var(--glass-modal);
-  border: 1px solid var(--glass-border);
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  min-width: 120px;
+  z-index: 30;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow: var(--shadow-elevated);
+  min-width: 130px;
   overflow: hidden;
-  backdrop-filter: blur(20px);
 }
 
 .column-menu button {
   display: block;
   width: 100%;
-  padding: 8px 14px;
+  padding: 10px 16px;
   border: none;
   background: none;
-  color: var(--text);
+  color: var(--text-primary);
+  font-family: var(--font-body);
   font-size: 12px;
+  font-weight: 500;
   text-align: left;
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .column-menu button:hover {
-  background: var(--glass-hover);
+  background: var(--bg-hover);
 }
 
 .column-menu .menu-danger {
@@ -135,29 +139,31 @@
 }
 
 .column-empty {
-  color: var(--text-dim);
+  color: var(--text-tertiary);
   font-size: 12px;
   text-align: center;
   padding: 32px 16px;
-  border: 1px dashed var(--glass-border);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.15);
+  border: 1px dashed var(--border-subtle);
+  border-radius: 12px;
+  background: var(--bg-hover);
 }
 
 .column-add-btn {
-  margin: 6px 8px 8px;
-  padding: 8px;
-  border: 1px dashed var(--glass-border);
-  border-radius: 10px;
+  margin: 4px 8px 8px;
+  padding: 10px;
+  border: 1px dashed var(--border-subtle);
+  border-radius: 12px;
   background: transparent;
-  color: var(--text-dim);
+  color: var(--text-tertiary);
+  font-family: var(--font-body);
   font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .column-add-btn:hover {
-  background: var(--glass-hover);
-  color: var(--text);
-  border-color: var(--accent);
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-accent);
 }

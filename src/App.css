@@ -3,8 +3,8 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: #0a0a0f;
-  color: var(--text);
+  background: var(--bg-deep);
+  color: var(--text-primary);
   overflow: hidden;
 }
 
@@ -12,8 +12,8 @@
   position: fixed;
   inset: 0;
   z-index: 0;
-  opacity: 0.035;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
   pointer-events: none;
@@ -26,10 +26,10 @@
   pointer-events: none;
   background: radial-gradient(
     600px circle at calc(var(--mouse-x, 0.5) * 100%) calc(var(--mouse-y, 0.5) * 100%),
-    rgba(129, 140, 248, 0.12),
+    var(--accent-glow),
     transparent 50%
   );
-  transition: background 0.05s ease-out;
+  transition: background 0.1s ease-out;
 }
 
 .app > *:not(.app-noise):not(.app-glow) {
@@ -40,15 +40,18 @@
 .app-nav {
   position: relative;
   z-index: 1;
-  padding: 0 16px 6px;
+  padding: 0 20px 6px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .nav-link {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   transition: color 0.2s;
 }
@@ -61,7 +64,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 40px 24px;
-  color: var(--text);
+  color: var(--text-primary);
 }
 
 .skills-header {
@@ -73,7 +76,9 @@
   margin-bottom: 16px;
   color: var(--accent);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 600;
 }
 
 .skills-back:hover {
@@ -83,6 +88,8 @@
 .skills-header h1 {
   margin: 0 0 8px;
   font-size: 28px;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .skills-source {
@@ -92,7 +99,7 @@
 }
 
 .skills-source code {
-  background: var(--glass-strong);
+  background: var(--bg-elevated);
   padding: 2px 6px;
   border-radius: 4px;
   font-size: 12px;
@@ -101,11 +108,14 @@
 .skills-content h2 {
   margin: 32px 0 12px;
   font-size: 20px;
+  font-family: var(--font-display);
+  font-weight: 600;
 }
 
 .skills-content p {
   line-height: 1.6;
   margin: 0 0 12px;
+  font-size: 14px;
 }
 
 .skill-item {

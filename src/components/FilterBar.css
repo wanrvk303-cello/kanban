@@ -2,58 +2,72 @@
   display: flex;
   gap: 6px;
   align-items: center;
+  flex: 1;
+  justify-content: center;
 }
 
 .filterbar-search {
-  padding: 6px 12px;
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
-  background: var(--glass-bg);
-  color: var(--text);
+  padding: 7px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
   font-size: 12px;
-  width: 180px;
+  width: 200px;
   outline: none;
   transition: border-color 0.2s, background 0.2s;
 }
 
 .filterbar-search::placeholder {
-  color: var(--text-dim);
+  color: var(--text-tertiary);
 }
 
 .filterbar-search:focus {
-  border-color: var(--accent);
-  background: var(--glass-hover);
+  border-color: var(--border-accent);
+  background: var(--bg-elevated);
 }
 
 .filterbar-select {
-  padding: 6px 10px;
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
-  background: var(--glass-bg);
-  color: var(--text);
-  font-size: 12px;
+  padding: 7px 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
   outline: none;
   cursor: pointer;
   transition: border-color 0.2s, background 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 26px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a09888' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 6px;
 }
 
 .filterbar-select:focus {
-  border-color: var(--accent);
-  background: var(--glass-hover);
+  border-color: var(--border-accent);
+  background-color: var(--bg-elevated);
 }
 
 .filterbar-select option {
-  background: #1a1a24;
-  color: var(--text);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
 }
 
 .filterbar-clear {
-  padding: 6px 10px;
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
+  padding: 7px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
   font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.2s;
