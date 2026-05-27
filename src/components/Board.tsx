@@ -136,6 +136,11 @@ export default function Board({ filters }: Props) {
           )}
         </div>
       </div>
+      <div className="board-footer">
+        <span>{Object.keys(board.cards).length} total cards</span>
+        <span>{board.columns.length} columns</span>
+        <span>Local storage — data stays on this device</span>
+      </div>
     </DndContext>
   );
 }
