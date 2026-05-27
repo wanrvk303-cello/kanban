@@ -1,3 +1,14 @@
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -5,7 +16,8 @@
   padding: 10px 12px;
   cursor: grab;
   user-select: none;
-  transition: box-shadow 0.15s;
+  transition: box-shadow 0.2s, transform 0.15s, opacity 0.15s;
+  animation: card-enter 0.2s ease-out;
 }
 
 .card:active {
