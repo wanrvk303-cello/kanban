@@ -55,6 +55,11 @@ export default function FilterBar({ filters, onChange }: Props) {
         <option value="">All priorities</option>
         {PRIORITIES.map((p) => <option key={p} value={p}>{p}</option>)}
       </select>
+      {(filters.search || filters.contentType || filters.platform || filters.priority) && (
+        <button className="filterbar-clear" onClick={() => onChange({ search: '', platform: '', contentType: '', priority: '' })}>
+          ✕ Clear
+        </button>
+      )}
     </div>
   );
 }

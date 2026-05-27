@@ -33,3 +33,19 @@
 .filterbar-select:focus {
   border-color: var(--accent);
 }
+
+.filterbar-clear {
+  padding: 6px 10px;
+  border: 1px solid var(--danger);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--danger);
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filterbar-clear:hover {
+  background: var(--danger);
+  color: #fff;
+}
