@@ -101,6 +101,35 @@
   padding: 0 6px;
 }
 
+.description-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.description-preview {
+  padding: 8px 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.5;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.description-preview h1,
+.description-preview h2,
+.description-preview h3 {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.description-preview a {
+  color: var(--accent);
+}
+
 .modal-actions {
   display: flex;
   justify-content: flex-end;

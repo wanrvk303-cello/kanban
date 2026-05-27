@@ -21,6 +21,18 @@ const PLATFORMS: Platform[] = [
 
 const PRIORITIES: Priority[] = ['low', 'medium', 'high'];
 
+function renderMarkdown(text: string): string {
+  return text
+    .replace(/### (.+)/g, '<h3>$1</h3>')
+    .replace(/## (.+)/g, '<h2>$1</h2>')
+    .replace(/# (.+)/g, '<h1>$1</h1>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+}
+
 export default function CardModal({ card, columnId, onClose }: Props) {
   const { dispatch } = useBoard();
   const isNew = !card;
@@ -118,8 +130,16 @@ export default function CardModal({ card, columnId, onClose }: Props) {
           </label>
 
           <label className="field">
-            <span>Description</span>
-            <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={3} />
+            <span>Description (markdown supported)</span>
+            <div className="description-wrap">
+              <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows={3} />
+              {description && (
+                <div
+                  className="description-preview"
+                  dangerouslySetInnerHTML={{ __html: renderMarkdown(description) }}
+                />
+              )}
+            </div>
           </label>
 
           <div className="field-row">
