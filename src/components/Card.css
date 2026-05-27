@@ -44,6 +44,11 @@
   flex-shrink: 0;
 }
 
+.card-type-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
 .card-platform {
   font-size: 10px;
   font-weight: 600;

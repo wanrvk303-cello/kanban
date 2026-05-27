@@ -15,6 +15,16 @@ const PRIORITY_COLORS: Record<string, string> = {
   high: '#f44336',
 };
 
+const CONTENT_TYPE_LABELS: Record<string, string> = {
+  photo: '📷',
+  reel: '🎬',
+  short: '▶️',
+  blog: '📝',
+  carousel: '🎠',
+  story: '📱',
+  other: '📄',
+};
+
 const PLATFORM_COLORS: Record<string, string> = {
   instagram: '#e4405f',
   youtube: '#ff0000',
@@ -82,6 +92,7 @@ function Card({ cardId, onClick }: Props) {
           className="card-priority"
           style={{ background: PRIORITY_COLORS[card.priority] }}
         />
+        <span className="card-type-icon">{CONTENT_TYPE_LABELS[card.contentType] || '📄'}</span>
         <span
           className="card-platform"
           style={{ background: PLATFORM_COLORS[card.platform], color: '#fff' }}
