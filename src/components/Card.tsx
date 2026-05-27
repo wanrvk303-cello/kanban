@@ -5,7 +5,7 @@ import './Card.css';
 
 interface Props {
   cardId: string;
-  columnId: string;
+  onClick: (cardId: string) => void;
 }
 
 const PRIORITY_COLORS: Record<string, string> = {
@@ -23,8 +23,8 @@ const PLATFORM_COLORS: Record<string, string> = {
   other: '#757575',
 };
 
-export default function Card({ cardId }: Props) {
-  const { board, dispatch } = useBoard();
+export default function Card({ cardId, onClick }: Props) {
+  const { board } = useBoard();
   const card = board.cards[cardId];
   const {
     attributes,
@@ -52,6 +52,7 @@ export default function Card({ cardId }: Props) {
       {...attributes}
       {...listeners}
       className="card"
+      onClick={() => onClick(cardId)}
     >
       <div className="card-top">
         <span

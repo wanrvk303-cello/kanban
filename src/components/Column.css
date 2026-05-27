@@ -17,6 +17,12 @@
   border-bottom: 1px solid var(--border);
 }
 
+.column-header-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .column-title {
   font-size: 14px;
   font-weight: 600;
@@ -26,6 +32,18 @@
   letter-spacing: 0.5px;
 }
 
+.column-rename-input {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--text);
+  outline: none;
+  width: 100%;
+}
+
 .column-count {
   background: var(--badge-bg);
   color: var(--badge-text);
@@ -33,6 +51,63 @@
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 10px;
+}
+
+.column-menu-wrap {
+  position: relative;
+}
+
+.column-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-muted);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.column-menu-btn:hover {
+  background: var(--tag-bg);
+}
+
+.column-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 20;
+  background: var(--modal-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  min-width: 120px;
+  overflow: hidden;
+}
+
+.column-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 14px;
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.column-menu button:hover {
+  background: var(--tag-bg);
+}
+
+.column-menu .menu-danger {
+  color: var(--danger);
+}
+
+.menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
 }
 
 .column-cards {
@@ -52,4 +127,22 @@
   padding: 24px 16px;
   border: 2px dashed var(--border);
   border-radius: 8px;
+}
+
+.column-add-btn {
+  margin: 8px;
+  padding: 8px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.column-add-btn:hover {
+  background: var(--tag-bg);
+  color: var(--text);
+  border-color: var(--accent);
 }

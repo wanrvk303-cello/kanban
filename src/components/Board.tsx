@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   useSensor,
   useSensors,
@@ -14,6 +15,8 @@ import './Board.css';
 
 export default function Board() {
   const { board, dispatch } = useBoard();
+  const [addingCol, setAddingCol] = useState(false);
+  const [newColTitle, setNewColTitle] = useState('');
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
@@ -27,15 +30,12 @@ export default function Board() {
     const activeId = active.id as string;
     const overId = over.id as string;
 
-    // Determine if dragging a card or a column
     const isCard = !!board.cards[activeId];
 
     if (isCard) {
-      // Find which column the card is currently in
       const sourceCol = board.columns.find((col) => col.cardIds.includes(activeId));
       if (!sourceCol) return;
 
-      // Find target — could be a column droppable or another card
       let targetColId: string;
       let insertIndex = 0;
 
@@ -65,6 +65,13 @@ export default function Board() {
     }
   }
 
+  function handleAddColumn() {
+    if (!newColTitle.trim()) return;
+    dispatch({ type: 'ADD_COLUMN', title: newColTitle.trim() });
+    setNewColTitle('');
+    setAddingCol(false);
+  }
+
   return (
     <DndContext sensors={sensors} collisionDetection={closestCorners} onDragEnd={handleDragEnd}>
       <div className="board">
@@ -73,6 +80,31 @@ export default function Board() {
           if (!col) return null;
           return <Column key={col.id} column={col} />;
         })}
+        <div className="add-column">
+          {addingCol ? (
+            <div className="add-column-form">
+              <input
+                autoFocus
+                value={newColTitle}
+                onChange={(e) => setNewColTitle(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleAddColumn();
+                  if (e.key === 'Escape') { setAddingCol(false); setNewColTitle(''); }
+                }}
+                placeholder="Column name..."
+                className="add-column-input"
+              />
+              <div className="add-column-actions">
+                <button className="btn btn-primary" onClick={handleAddColumn}>Add</button>
+                <button className="btn" onClick={() => { setAddingCol(false); setNewColTitle(''); }}>Cancel</button>
+              </div>
+            </div>
+          ) : (
+            <button className="add-column-btn" onClick={() => setAddingCol(true)}>
+              + Add Column
+            </button>
+          )}
+        </div>
       </div>
     </DndContext>
   );
