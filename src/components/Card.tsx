@@ -54,6 +54,11 @@ export default function Card({ cardId, onClick }: Props) {
       className="card"
       onClick={() => onClick(cardId)}
     >
+      {card.coverImage && (
+        <div className="card-cover">
+          <img src={card.coverImage} alt="" onError={(e) => { (e.target as HTMLElement).style.display = 'none'; }} />
+        </div>
+      )}
       <div className="card-top">
         <span
           className="card-priority"

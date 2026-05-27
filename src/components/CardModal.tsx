@@ -34,6 +34,7 @@ export default function CardModal({ card, columnId, onClose }: Props) {
   const [likes, setLikes] = useState(card?.metrics.likes?.toString() ?? '0');
   const [comments, setComments] = useState(card?.metrics.comments?.toString() ?? '0');
   const [views, setViews] = useState(card?.metrics.views?.toString() ?? '0');
+  const [coverImage, setCoverImage] = useState(card?.coverImage ?? '');
   const [dueDate, setDueDate] = useState(card?.dates.dueDate?.split('T')[0] ?? '');
   const [shotDate, setShotDate] = useState(card?.dates.shotDate?.split('T')[0] ?? '');
   const [publishDate, setPublishDate] = useState(card?.dates.publishDate?.split('T')[0] ?? '');
@@ -82,6 +83,7 @@ export default function CardModal({ card, columnId, onClose }: Props) {
         shotDate: toISO(shotDate),
         publishDate: toISO(publishDate),
       },
+      coverImage: coverImage || undefined,
       attachments: card?.attachments ?? [],
     };
 
@@ -164,6 +166,11 @@ export default function CardModal({ card, columnId, onClose }: Props) {
               </label>
             </div>
           </fieldset>
+
+          <label className="field">
+            <span>Cover Image URL</span>
+            <input value={coverImage} onChange={(e) => setCoverImage(e.target.value)} placeholder="https://..." />
+          </label>
 
           <fieldset className="fieldset">
             <legend>Dates</legend>
