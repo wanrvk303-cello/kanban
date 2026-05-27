@@ -12,7 +12,7 @@ const columnDefinitions = [
 ];
 
 function sampleCard(
-  columnId: string,
+  _columnId: string,
   overrides: Partial<Card> = {},
 ): Card {
   return {
@@ -24,7 +24,6 @@ function sampleCard(
     tags: [],
     priority: 'medium',
     metrics: { likes: 0, comments: 0, views: 0 },
-    dates: { createdAt: nowISO() },
     attachments: [],
     ...overrides,
     dates: { createdAt: nowISO(), ...overrides.dates },
@@ -90,8 +89,6 @@ export function createDefaultBoard(): Board {
     cards[card.id] = card;
   }
 
-  const now = nowISO();
-  const defaultCards: [number, Card[]] = [0, ideaCards];
   columns[0].cardIds = ideaCards.map((c) => c.id);
   columns[1].cardIds = planningCards.map((c) => c.id);
   columns[4].cardIds = postedCards.map((c) => c.id);

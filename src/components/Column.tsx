@@ -35,8 +35,6 @@ export default function Column({ column, cardMatches }: Props) {
     setShowMenu(false);
   }
 
-  const hasActiveFilters = false; // simplified
-
   return (
     <>
       <div className="column">

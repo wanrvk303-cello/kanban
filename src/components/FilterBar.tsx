@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { ContentType, Platform, Priority } from '../types';
 import './FilterBar.css';
 
