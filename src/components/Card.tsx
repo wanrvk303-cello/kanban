@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useBoard } from '../data/store';
@@ -23,20 +24,9 @@ const PLATFORM_COLORS: Record<string, string> = {
   other: '#757575',
 };
 
-export default function Card({ cardId, onClick }: Props) {
+function Card({ cardId, onClick }: Props) {
   const { board } = useBoard();
   const card = board.cards[cardId];
-
-  function getDueStatus(): { label: string; className: string } | null {
-    if (!card?.dates.dueDate) return null;
-    const now = Date.now();
-    const due = new Date(card.dates.dueDate).getTime();
-    const diff = due - now;
-    if (diff < 0) return { label: 'Overdue', className: 'due-overdue' };
-    if (diff < 86400000) return { label: 'Due soon', className: 'due-soon' };
-    if (diff < 604800000) return { label: 'Due this week', className: 'due-week' };
-    return null;
-  }
   const {
     attributes,
     listeners,
@@ -55,6 +45,18 @@ export default function Card({ cardId, onClick }: Props) {
   if (!card) return null;
 
   const hasMetrics = card.metrics.likes > 0 || card.metrics.comments > 0 || card.metrics.views > 0;
+
+  function getDueStatus(): { label: string; className: string } | null {
+    if (!card.dates.dueDate) return null;
+    const now = Date.now();
+    const due = new Date(card.dates.dueDate).getTime();
+    const diff = due - now;
+    if (diff < 0) return { label: 'Overdue', className: 'due-overdue' };
+    if (diff < 86400000) return { label: 'Due soon', className: 'due-soon' };
+    if (diff < 604800000) return { label: 'Due this week', className: 'due-week' };
+    return null;
+  }
+
   const dueStatus = getDueStatus();
 
   return (
@@ -104,3 +106,5 @@ export default function Card({ cardId, onClick }: Props) {
     </div>
   );
 }
+
+export default memo(Card);
