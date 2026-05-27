@@ -77,7 +77,15 @@ export default function Column({ column, cardMatches }: Props) {
             strategy={verticalListSortingStrategy}
           >
             {column.cardIds.length === 0 && (
-              <div className="column-empty">Drop cards here</div>
+              <div className="column-empty">
+                {column.title === 'Idea' && '✨ Brainstorm your next concept'}
+                {column.title === 'Planning' && '📋 Plan your shoot details'}
+                {column.title === 'Shooting' && '📸 Drag in your active shoots'}
+                {column.title === 'Editing' && '🎨 Move shots that need editing'}
+                {column.title === 'Posted' && '✅ Track published content here'}
+                {column.title === 'Archived' && '📦 Reference past work here'}
+                {!['Idea', 'Planning', 'Shooting', 'Editing', 'Posted', 'Archived'].includes(column.title) && 'Drop cards here'}
+              </div>
             )}
             {column.cardIds.map((cardId) => {
               if (!cardMatches(cardId)) return null;
